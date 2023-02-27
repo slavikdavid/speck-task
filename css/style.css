@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&family=Tilt+Warp&display=swap');
+
+/* Animacije kod dodavanja elemenata u grid*/
+@keyframes animation-appear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+html,
+button,
+input {
+    transition: all 0.25s ease-out;
+
+}
+
+/* Postavljanje fontova naslova i elemenata grida */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.elements {
+    font-family: 'Tilt Warp', cursive;
+}
+
+/* Postavljanje velicine fonta na raznim elementima stranice */
+a,
+p,
+input,
+button {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+}
+
+/* Tekst za brisanje svih elemenata */
+
+#remove {
+    font-weight: 600;
+    color: rgb(235, 15, 3);
+    white-space: nowrap;
+    transition: 0.4s;
+    border-bottom: 2px solid transparent;
+}
+
+/* Hover preko teksta za brisanje svih elemenata */
+
+#remove:hover {
+    cursor: pointer;
+    border-color: rgb(235, 15, 3);
+}
+
+/*  Glavni container stranice
+    Desktop: 50% sirine
+    Mobile: 100% sirine
+*/
+
+#container {
+    padding: 1%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tekstualno polje */
+
+input {
+    border: 2px solid rgb(121, 121, 121);
+    border-radius: 16px;
+    padding: 1%;
+    width: 280px;
+}
+
+input:focus {
+    border: 2px solid rgb(7, 62, 171);
+}
+
+/* Gumb za dodavanje elemenata */
+
+button {
+    cursor: pointer;
+    border: 2px solid rgb(121, 121, 121);
+    border-radius: 16px;
+    padding: 1%;
+    width: 120px;
+    background: rgb(232, 232, 232);
+}
+
+button:hover {
+    color: white;
+    background: rgb(42, 138, 255);
+    font-weight: 800;
+    border: 2px solid rgb(26, 96, 181);
+}
+
+/* Animacija pojavljivanja teksta
+koji indicira da je grid prazan */
+
+#empty {
+    margin-top: 5%;
+    animation: animation-appear .3s linear;
+}
+
+/* Grid */
+
+.elements {
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Elementi grida */
+
+/* Div elementi grida prilagodavaju se kolicini teksta,
+podrzano je i unosenje vece kolicine teksta (sprijeceno da tekst izlazi iz okvira diva)
+*/
+
+/* Djeca grida imaju display flex zbog vertikalnog centriranja teksta u divu
+mozda je na nekim browserima buggy */
+
+.elements div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    padding: 2%;
+    overflow-wrap: anywhere;
+    border-radius: 16px;
+    animation: animation-appear .3s linear;
+    margin-top: 5%;
+    filter: drop-shadow(0 0.3rem 0.3rem rgba(0, 0, 0, 0.25));
+    background: white;
+}
+
+/* Breakpointovi za responzivnost */
+
+@media screen and (min-width: 320px) {
+    #container {
+        width: 100%;
+    }
+
+    button,
+    input {
+        padding: 2%;
+        margin-top: 4%;
+    }
+
+    body {
+        padding: 5%;
+    }
+
+    .elements {
+        grid-template-columns: 1fr;
+    }
+
+    .elements div:nth-child(odd) {
+        margin-right: 0%;
+    }
+
+    #btn-group {
+        display: block;
+        width: 100%;
+        margin-bottom: 4%;
+    }
+}
+
+@media screen and (min-width: 1225px) {
+
+    button,
+    input {
+        margin: 0%;
+    }
+
+    button {
+        margin-left: 2%;
+    }
+
+    .elements {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #container {
+        width: 50%;
+    }
+
+    /* Desna margina za svaki n-ti element grida,
+    gdje je n neparan broj */
+    .elements div:nth-child(odd) {
+        margin-right: 5%;
+    }
+
+    /* Div koji predstavlja grupu div-ova
+    (tekstualno polje + gumb za dodavanje novih elemenata)
+    */
+
+    #btn-group {
+        margin: auto;
+        float: left;
+        width: 100%;
+    }
+
+    /* Space-between justify kako bi
+    polje za unos teksta i gumb za dodavanje
+    bili razmaknuti suprotno od gumba za brisanje
+    elemenata */
+
+    #btn-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

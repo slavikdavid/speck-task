@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Speck Academy 2023</title>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>My technologies</h1>
+        <div id="btn-container">
+            <div id="btn-group">
+                <input type="text" id="technology" name="technology" placeholder="Enter new technology..." required>
+                <button type="button" onClick="DodajElement()">Add</button>
+            </div>
+            <a id="remove" type="button" onClick="ObrisiElemente()">Remove all
+                items</a>
+        </div>
+
+        <p id="empty">There are currently no technologies added 😞. Feel free to add them!</p>
+
+        <div class='elements'>
+        </div>
+
+    </div>
+</body>
+
+</html>
